@@ -56,6 +56,8 @@ pub struct Product {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub price_amount_micros: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_intro_offer_eligible: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subscription_offer_details: Option<Vec<SubscriptionOffer>>,
 }
 

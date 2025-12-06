@@ -86,6 +86,9 @@ class IapPlugin: Plugin {
                 if product.type == .autoRenewable || product.type == .nonRenewable {
                     if let subscription = product.subscription {
                         var subscriptionOffers: [JsonObject] = []
+                        
+                        let introEligibility = try await subscription.isEligibleForIntroOffer
+                        productDict["isIntroOfferEligible"] = introEligibility
 
                         // Add introductory offer if available
                         if let introOffer = subscription.introductoryOffer {
@@ -160,7 +163,7 @@ class IapPlugin: Plugin {
             }
             
             // Initiate purchase with options
-            let result = purchaseOptions.isEmpty 
+            let result = purchaseOptions.isEmpty
                 ? try await product.purchase()
                 : try await product.purchase(options: purchaseOptions)
             
