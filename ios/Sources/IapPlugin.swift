@@ -341,6 +341,22 @@ class IapPlugin: Plugin {
         
         invoke.resolve(statusResult)
     }
+
+    @objc public func showManageSubscriptions(_ invoke: Invoke) {
+        Task { @MainActor in
+            guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                invoke.reject("No window scene")
+                return
+            }
+
+            do {
+                try await AppStore.showManageSubscriptions(in: scene)
+                invoke.resolve()
+            } catch {
+                invoke.reject(error.localizedDescription)
+            }
+        }
+    }
     
     private func handleTransactionUpdate(_ result: VerificationResult<Transaction>) async {
         switch result {

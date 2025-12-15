@@ -14,6 +14,7 @@ Default permissions for the plugin
 - `allow-get-purchase-history`
 - `allow-acknowledge-purchase`
 - `allow-get-product-status`
+- `allow-show-manage-subscriptions`
 
 ## Permission Table
 
@@ -254,6 +255,32 @@ Enables the restore_purchases command without any pre-configured scope.
 <td>
 
 Denies the restore_purchases command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:allow-show-manage-subscriptions`
+
+</td>
+<td>
+
+Enables the show_manage_subscriptions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:deny-show-manage-subscriptions`
+
+</td>
+<td>
+
+Denies the show_manage_subscriptions command without any pre-configured scope.
 
 </td>
 </tr>

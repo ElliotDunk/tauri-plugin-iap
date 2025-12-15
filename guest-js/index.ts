@@ -1,163 +1,163 @@
 import {
-  invoke,
-  addPluginListener,
-  PluginListener,
+    invoke,
+    addPluginListener,
+    PluginListener,
 } from "@tauri-apps/api/core";
 
 /**
  * Response from IAP initialization
  */
 export interface InitializeResponse {
-  success: boolean;
+    success: boolean;
 }
 
 /**
  * Represents a pricing phase for subscription products
  */
 export interface PricingPhase {
-  formattedPrice: string;
-  priceCurrencyCode: string;
-  priceAmountMicros: number;
-  billingPeriod: string;
-  billingCycleCount: number;
-  recurrenceMode: number;
+    formattedPrice: string;
+    priceCurrencyCode: string;
+    priceAmountMicros: number;
+    billingPeriod: string;
+    billingCycleCount: number;
+    recurrenceMode: number;
 }
 
 /**
  * Subscription offer details including pricing phases
  */
 export interface SubscriptionOffer {
-  offerToken: string;
-  basePlanId: string;
-  offerId?: string;
-  pricingPhases: PricingPhase[];
+    offerToken: string;
+    basePlanId: string;
+    offerId?: string;
+    pricingPhases: PricingPhase[];
 }
 
 /**
  * Product information from the app store
  */
 export interface Product {
-  /** Unique product identifier as configured in the app store */
-  productId: string;
-  /** Localized product title */
-  title: string;
-  /** Localized product description */
-  description: string;
-  /** Type of product: "subs" for subscriptions, "inapp" for one-time purchases */
-  productType: string;
-  /** Localized price string with currency symbol (e.g., "$9.99") */
-  formattedPrice?: string;
-  /** ISO 4217 currency code (e.g., "USD", "EUR") */
-  priceCurrencyCode?: string;
-  /** Price in micros (price × 1,000,000). For example, $9.99 = 9990000 */
-  priceAmountMicros?: number;
-  /** Subscription offer details including pricing phases. (Android only) */
-  subscriptionOfferDetails?: SubscriptionOffer[];
+    /** Unique product identifier as configured in the app store */
+    productId: string;
+    /** Localized product title */
+    title: string;
+    /** Localized product description */
+    description: string;
+    /** Type of product: "subs" for subscriptions, "inapp" for one-time purchases */
+    productType: string;
+    /** Localized price string with currency symbol (e.g., "$9.99") */
+    formattedPrice?: string;
+    /** ISO 4217 currency code (e.g., "USD", "EUR") */
+    priceCurrencyCode?: string;
+    /** Price in micros (price × 1,000,000). For example, $9.99 = 9990000 */
+    priceAmountMicros?: number;
+    /** Subscription offer details including pricing phases. (Android only) */
+    subscriptionOfferDetails?: SubscriptionOffer[];
 }
 
 /**
  * Response containing products fetched from the store
  */
 export interface GetProductsResponse {
-  products: Product[];
+    products: Product[];
 }
 
 /**
  * Purchase transaction information
  */
 export interface Purchase {
-  /** Unique order identifier from the store. May be undefined for pending purchases. */
-  orderId?: string;
-  /** Application package name (Android) or bundle identifier (iOS/macOS) */
-  packageName: string;
-  /** Product identifier that was purchased */
-  productId: string;
-  /** Unix timestamp (milliseconds) when the purchase was made */
-  purchaseTime: number;
-  /** Token used to identify this purchase for acknowledgment and server-side verification */
-  purchaseToken: string;
-  /** Current state of the purchase. */
-  purchaseState: PurchaseState;
-  /** Whether this subscription is set to auto-renew. Always false for one-time purchases. */
-  isAutoRenewing: boolean;
-  /** Whether the purchase has been acknowledged. Unacknowledged purchases are refunded after 3 days. (Android only, always true on iOS/macOS) */
-  isAcknowledged: boolean;
-  /** Raw JSON response from the store for server-side verification. (Android only) */
-  originalJson: string;
-  /** Cryptographic signature for purchase verification. (Android only) */
-  signature: string;
-  /** Original transaction ID. Used to link renewals and restores to the original purchase. (iOS/macOS only) */
-  originalId?: string;
+    /** Unique order identifier from the store. May be undefined for pending purchases. */
+    orderId?: string;
+    /** Application package name (Android) or bundle identifier (iOS/macOS) */
+    packageName: string;
+    /** Product identifier that was purchased */
+    productId: string;
+    /** Unix timestamp (milliseconds) when the purchase was made */
+    purchaseTime: number;
+    /** Token used to identify this purchase for acknowledgment and server-side verification */
+    purchaseToken: string;
+    /** Current state of the purchase. */
+    purchaseState: PurchaseState;
+    /** Whether this subscription is set to auto-renew. Always false for one-time purchases. */
+    isAutoRenewing: boolean;
+    /** Whether the purchase has been acknowledged. Unacknowledged purchases are refunded after 3 days. (Android only, always true on iOS/macOS) */
+    isAcknowledged: boolean;
+    /** Raw JSON response from the store for server-side verification. (Android only) */
+    originalJson: string;
+    /** Cryptographic signature for purchase verification. (Android only) */
+    signature: string;
+    /** Original transaction ID. Used to link renewals and restores to the original purchase. (iOS/macOS only) */
+    originalId?: string;
 }
 
 /**
  * Response containing restored purchases
  */
 export interface RestorePurchasesResponse {
-  purchases: Purchase[];
+    purchases: Purchase[];
 }
 
 /**
  * Historical purchase record
  */
 export interface PurchaseHistoryRecord {
-  productId: string;
-  purchaseTime: number;
-  purchaseToken: string;
-  quantity: number;
-  originalJson: string;
-  signature: string;
+    productId: string;
+    purchaseTime: number;
+    purchaseToken: string;
+    quantity: number;
+    originalJson: string;
+    signature: string;
 }
 
 /**
  * Response containing purchase history
  */
 export interface GetPurchaseHistoryResponse {
-  history: PurchaseHistoryRecord[];
+    history: PurchaseHistoryRecord[];
 }
 
 /**
  * Response from acknowledging a purchase
  */
 export interface AcknowledgePurchaseResponse {
-  success: boolean;
+    success: boolean;
 }
 
 /**
  * Purchase state enumeration
  */
 export enum PurchaseState {
-  PURCHASED = 0,
-  CANCELED = 1,
-  PENDING = 2,
+    PURCHASED = 0,
+    CANCELED = 1,
+    PENDING = 2,
 }
 
 /**
  * Current status of a product for the user
  */
 export interface ProductStatus {
-  productId: string;
-  isOwned: boolean;
-  purchaseState?: PurchaseState;
-  purchaseTime?: number;
-  expirationTime?: number;
-  isAutoRenewing?: boolean;
-  isAcknowledged?: boolean;
-  purchaseToken?: string;
+    productId: string;
+    isOwned: boolean;
+    purchaseState?: PurchaseState;
+    purchaseTime?: number;
+    expirationTime?: number;
+    isAutoRenewing?: boolean;
+    isAcknowledged?: boolean;
+    purchaseToken?: string;
 }
 
 /**
  * Optional parameters for purchase requests
  */
 export interface PurchaseOptions {
-  /** Offer token for subscription products (Android) */
-  offerToken?: string;
-  /** Obfuscated account identifier for fraud prevention (Android only) */
-  obfuscatedAccountId?: string;
-  /** Obfuscated profile identifier for fraud prevention (Android only) */
-  obfuscatedProfileId?: string;
-  /** App account token - must be a valid UUID string (iOS only) */
-  appAccountToken?: string;
+    /** Offer token for subscription products (Android) */
+    offerToken?: string;
+    /** Obfuscated account identifier for fraud prevention (Android only) */
+    obfuscatedAccountId?: string;
+    /** Obfuscated profile identifier for fraud prevention (Android only) */
+    obfuscatedProfileId?: string;
+    /** App account token - must be a valid UUID string (iOS only) */
+    appAccountToken?: string;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface PurchaseOptions {
  * ```
  */
 export async function initialize(): Promise<InitializeResponse> {
-  return await invoke<InitializeResponse>("plugin:iap|initialize");
+    return await invoke<InitializeResponse>("plugin:iap|initialize");
 }
 
 /**
@@ -192,15 +192,15 @@ export async function initialize(): Promise<InitializeResponse> {
  * ```
  */
 export async function getProducts(
-  productIds: string[],
-  productType: "subs" | "inapp" = "subs",
+    productIds: string[],
+    productType: "subs" | "inapp" = "subs",
 ): Promise<GetProductsResponse> {
-  return await invoke<GetProductsResponse>("plugin:iap|get_products", {
-    payload: {
-      productIds,
-      productType,
-    },
-  });
+    return await invoke<GetProductsResponse>("plugin:iap|get_products", {
+        payload: {
+            productIds,
+            productType,
+        },
+    });
 }
 
 /**
@@ -229,17 +229,17 @@ export async function getProducts(
  * ```
  */
 export async function purchase(
-  productId: string,
-  productType: "subs" | "inapp" = "subs",
-  options?: PurchaseOptions,
+    productId: string,
+    productType: "subs" | "inapp" = "subs",
+    options?: PurchaseOptions,
 ): Promise<Purchase> {
-  return await invoke<Purchase>("plugin:iap|purchase", {
-    payload: {
-      productId,
-      productType,
-      ...options,
-    },
-  });
+    return await invoke<Purchase>("plugin:iap|purchase", {
+        payload: {
+            productId,
+            productType,
+            ...options,
+        },
+    });
 }
 
 /**
@@ -256,16 +256,16 @@ export async function purchase(
  * ```
  */
 export async function restorePurchases(
-  productType: "subs" | "inapp" = "subs",
+    productType: "subs" | "inapp" = "subs",
 ): Promise<RestorePurchasesResponse> {
-  return await invoke<RestorePurchasesResponse>(
-    "plugin:iap|restore_purchases",
-    {
-      payload: {
-        productType,
-      },
-    },
-  );
+    return await invoke<RestorePurchasesResponse>(
+        "plugin:iap|restore_purchases",
+        {
+            payload: {
+                productType,
+            },
+        },
+    );
 }
 
 /**
@@ -282,9 +282,9 @@ export async function restorePurchases(
  * ```
  */
 export async function getPurchaseHistory(): Promise<GetPurchaseHistoryResponse> {
-  return await invoke<GetPurchaseHistoryResponse>(
-    "plugin:iap|get_purchase_history",
-  );
+    return await invoke<GetPurchaseHistoryResponse>(
+        "plugin:iap|get_purchase_history",
+    );
 }
 
 /**
@@ -303,16 +303,16 @@ export async function getPurchaseHistory(): Promise<GetPurchaseHistoryResponse> 
  * ```
  */
 export async function acknowledgePurchase(
-  purchaseToken: string,
+    purchaseToken: string,
 ): Promise<AcknowledgePurchaseResponse> {
-  return await invoke<AcknowledgePurchaseResponse>(
-    "plugin:iap|acknowledge_purchase",
-    {
-      payload: {
-        purchaseToken,
-      },
-    },
-  );
+    return await invoke<AcknowledgePurchaseResponse>(
+        "plugin:iap|acknowledge_purchase",
+        {
+            payload: {
+                purchaseToken,
+            },
+        },
+    );
 }
 
 /**
@@ -334,15 +334,15 @@ export async function acknowledgePurchase(
  * ```
  */
 export async function getProductStatus(
-  productId: string,
-  productType: "subs" | "inapp" = "subs",
+    productId: string,
+    productType: "subs" | "inapp" = "subs",
 ): Promise<ProductStatus> {
-  return await invoke<ProductStatus>("plugin:iap|get_product_status", {
-    payload: {
-      productId,
-      productType,
-    },
-  });
+    return await invoke<ProductStatus>("plugin:iap|get_product_status", {
+        payload: {
+            productId,
+            productType,
+        },
+    });
 }
 
 /**
@@ -365,7 +365,11 @@ export async function getProductStatus(
  * ```
  */
 export async function onPurchaseUpdated(
-  callback: (purchase: Purchase) => void,
+    callback: (purchase: Purchase) => void,
 ): Promise<PluginListener> {
-  return await addPluginListener("iap", "purchaseUpdated", callback);
+    return await addPluginListener("iap", "purchaseUpdated", callback);
+}
+
+export async function showManageSubscriptions(): Promise<void> {
+    return await invoke("plugin:iap|show_manage_subscriptions", {});
 }

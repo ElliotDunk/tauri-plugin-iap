@@ -192,4 +192,12 @@ impl<R: Runtime> Iap<R> {
 
         Self::to_result(ffi::getProductStatus(product_id, product_type))
     }
+
+    pub fn show_manage_subscriptions(
+            &self,
+        ) -> crate::Result<()> {
+                    Err(crate::Error::from(std::io::Error::other(
+                        "show_manage_subscriptions is not supported on this platform",
+                    )))
+        }
 }
