@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/master.swiftdeps"
+  },
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri-plugin-iapPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/runner.d",
+    "object": "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/runner.swiftdeps"
+  }
+}
