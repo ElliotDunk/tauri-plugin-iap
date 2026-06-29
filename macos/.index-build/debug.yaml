@@ -1,0 +1,99 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "PluginTests-x86_64-apple-macosx15.0-debug.module": ["<PluginTests-x86_64-apple-macosx15.0-debug.module>"]
+  "main": ["<tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module>"]
+  "tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module": ["<tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module>"]
+  "tauri-plugin-iapPackageTests-x86_64-apple-macosx15.0-debug.module": ["<tauri-plugin-iapPackageTests-x86_64-apple-macosx15.0-debug.module>"]
+  "test": ["<PluginTests-x86_64-apple-macosx15.0-debug.module>","<tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/MockFFI.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/PluginTests.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/DerivedSources/resource_bundle_accessor.swift"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/sources"]
+    description: "Write auxiliary file /Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/sources"
+
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri-plugin-iap_PluginTests.bundle/TestProducts.storekit":
+    tool: copy-tool
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/TestProducts.storekit"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri-plugin-iap_PluginTests.bundle/TestProducts.storekit"]
+    description: "Copying /Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/TestProducts.storekit"
+
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/IapPlugin.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/generated/SwiftBridgeCore.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/generated/tauri-plugin-iap/tauri-plugin-iap.swift"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/sources"]
+    description: "Write auxiliary file /Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/sources"
+
+  "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri-plugin-iapPackageTests.derived/runner.swift"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/sources"]
+    description: "Write auxiliary file /Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/sources"
+
+  "<PluginTests-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/PluginTests.swiftmodule"]
+    outputs: ["<PluginTests-x86_64-apple-macosx15.0-debug.module>"]
+
+  "<tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iap.swiftmodule"]
+    outputs: ["<tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module>"]
+
+  "<tauri-plugin-iapPackageTests-x86_64-apple-macosx15.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iapPackageTests.swiftmodule"]
+    outputs: ["<tauri-plugin-iapPackageTests-x86_64-apple-macosx15.0-debug.module>"]
+
+  "C.PluginTests-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/MockFFI.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/PluginTests.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/DerivedSources/resource_bundle_accessor.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","<PluginTests-x86_64-apple-macosx15.0-debug.module-resources>","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iap.swiftmodule","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/sources"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/PluginTests.swiftmodule"]
+    description: "Compiling Swift Module 'PluginTests' (3 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","PluginTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/PluginTests.swiftmodule","-output-file-map","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/output-file-map.json","-parse-as-library","-incremental","@/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/PluginTests.build/sources","-I","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx13.0","-enable-batch-mode","-Onone","-enable-testing","-j28","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-swift-version","5","-import-objc-header","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/bridging-header.h","-disable-bridging-pch","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g"]
+
+  "C.tauri-plugin-iap-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/IapPlugin.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/generated/SwiftBridgeCore.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/generated/tauri-plugin-iap/tauri-plugin-iap.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/sources"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iap.swiftmodule"]
+    description: "Compiling Swift Module 'tauri_plugin_iap' (3 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","tauri_plugin_iap","-emit-dependencies","-emit-module","-emit-module-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iap.swiftmodule","-output-file-map","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/output-file-map.json","-parse-as-library","-incremental","@/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/sources","-I","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx13.0","-enable-batch-mode","-Onone","-enable-testing","-j28","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iap.build/tauri-plugin-iap-Swift.h","-swift-version","5","-import-objc-header","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/bridging-header.h","-disable-bridging-pch","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g"]
+
+  "C.tauri-plugin-iapPackageTests-x86_64-apple-macosx15.0-debug.module":
+    tool: shell
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri-plugin-iapPackageTests.derived/runner.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/PluginTests.swiftmodule","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/sources"]
+    outputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iapPackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'tauri_plugin_iapPackageTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","tauri_plugin_iapPackageTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules/tauri_plugin_iapPackageTests.swiftmodule","-output-file-map","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/output-file-map.json","-parse-as-library","-incremental","@/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/sources","-I","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/Modules","-target","x86_64-apple-macosx13.0","-enable-batch-mode","-Onone","-enable-testing","-j28","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/tauri-plugin-iapPackageTests-Swift.h","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Sources/","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Tests/PluginTests/","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Package.swift","/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
+  "PluginTests-x86_64-apple-macosx15.0-debug.module-resources":
+    tool: phony
+    inputs: ["/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri-plugin-iap_PluginTests.bundle/TestProducts.storekit"]
+    outputs: ["<PluginTests-x86_64-apple-macosx15.0-debug.module-resources>"]
+

@@ -49,3 +49,11 @@ pub(crate) async fn get_product_status<R: Runtime>(
     app.iap()
         .get_product_status(payload.product_id, payload.product_type)
 }
+
+#[command]
+pub(crate) async fn show_manage_subscriptions<R: Runtime>(
+    app: AppHandle<R>,
+) -> Result<()> {
+    app.iap()
+        .show_manage_subscriptions()
+}

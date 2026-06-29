@@ -1,0 +1,4 @@
+module tauri_plugin_iapPackageTests {
+    header "/Users/elliotdunk/Documents/PocketSolver/src-tauri/plugins/tauri-plugin-iap/macos/.index-build/x86_64-apple-macosx/debug/tauri_plugin_iapPackageTests.build/tauri-plugin-iapPackageTests-Swift.h"
+    requires objc
+}

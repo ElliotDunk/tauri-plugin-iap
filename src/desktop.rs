@@ -69,4 +69,12 @@ impl<R: Runtime> Iap<R> {
             "IAP is not supported on this platform",
         )))
     }
+
+    pub fn show_manage_subscriptions(
+        &self,
+    ) -> crate::Result<()> {
+        Err(crate::Error::from(std::io::Error::other(
+            "show_manage_subscriptions is not supported on this platform",
+        )))
+    }
 }

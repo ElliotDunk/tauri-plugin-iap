@@ -99,4 +99,15 @@ impl<R: Runtime> Iap<R> {
             )
             .map_err(Into::into)
     }
+
+    pub fn show_manage_subscriptions(
+        &self,
+    ) -> crate::Result<()> {
+        self.0
+            .run_mobile_plugin(
+                "showManageSubscriptions",
+                ()
+            )
+            .map_err(Into::into)
+    }
 }

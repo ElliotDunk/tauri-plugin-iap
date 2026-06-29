@@ -12,6 +12,7 @@ const COMMANDS: &[&str] = &[
     "get_purchase_history",
     "acknowledge_purchase",
     "get_product_status",
+    "show_manage_subscriptions"
 ];
 
 fn main() {
